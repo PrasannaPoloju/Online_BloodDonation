@@ -1,0 +1,113 @@
+<nav class="navbar navbar-expand-sm navbar-da" style="background-color:black">
+           
+    <div class="container-fluid">
+        <button onclick="history.back()"class="btn btn-primary navbar-btn"style="width:80;height: 35;">Go Back</button>   
+
+   </div>
+</nav>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+    <div class="col-md-6 offset-md-3">
+    <h3>Update User </h3>
+    <form (ngSubmit) = "updateReceiverProfile()"style="background-color:#E6E6FA" #updateReceiver="ngForm">
+      <div class="form-group">
+        <label for="name">UserName: <b class="text-danger">*</b></label>
+        <input type="text" class="form-control" placeholder="enter name" name="Name" [(ngModel)]="receiver.name" required 
+          minlength="3" maxlength="40" #Name="ngModel"
+        [class.is-invalid]="Name.invalid && Name.touched">
+       <small class="text-danger" [class.d-none]="Name.valid || Name.untouched"> 
+        <b *ngIf="Name.errors && Name.errors['minlength']">name must contain at least 3 characters.</b>
+       </small>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address: <b class="text-danger">*</b></label>
+        <input type="email" class="form-control" placeholder="enter email" name="email" [(ngModel)]="receiver.email" required pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
+        #email="ngModel"
+        [class.is-invalid]="email.invalid && email.touched">
+        <div class="invalid-feedback">Please Enter Valid Email</div>
+          <small class="text-danger" [class.d-none]="email.valid||email.untouched"></small>
+      
+     
+      </div>
+  
+      <div class="form-group">
+        <label for="gender">Gender: <b class="text-danger">*</b></label>
+        <select class="form-control" id="sel1" name="gender" [(ngModel)]="receiver.gender"
+            #gender="ngModel">
+                <option selected>Male</option>
+                <option>Female</option>
+                <option>Others</option>
+            </select>
+            <div class="invalid-feedback">Please select gender.</div>
+       <small class="text-danger" [class.d-none]="gender.valid || gender.untouched"><b></b></small>
+      </div>
+  
+      <div class="form-group">
+        <label for="age">Age: <b class="text-danger">*</b></label>
+        <input type="number" class="form-control" placeholder="enter your age" name="age" [(ngModel)]="receiver.age" required 
+        #age="ngModel"
+        [class.is-invalid]="age.invalid && age.touched">
+       <small class="text-danger" [class.d-none]="age.valid || age.untouched"><b></b></small>
+      </div>
+      
+  
+      <div class="form-group">
+        <label for="mobileNumber">Mobile Number: <b class="text-danger">*</b></label>
+        <input type="tel" class="form-control" placeholder="enter mobile number" name="mobileNumber" [(ngModel)]="receiver.mobileNumber"  pattern="[0-9]{10}" required 
+        #mobileNumber="ngModel" title="Please enter a valid 10-digit mobile number (digits only)."
+        [class.is-invalid]="mobileNumber.invalid && mobileNumber.touched">
+        <div class="invalid-feedback">Please Enter Valid mobile number</div>
+        <small class="text-danger" [class.d-none]="mobileNumber.valid || mobileNumber.untouched"><b></b></small>
+      </div>
+  
+  
+      <div class="form-group">
+        <label for="password">Password: <b class="text-danger">*</b></label>
+        <input type="password" class="form-control" placeholder="enter password" name="password" [(ngModel)]="receiver.password" required pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}"
+        minlength="8" #password="ngModel"
+        [class.is-invalid]="password.invalid && password.touched">
+  
+        <div class="invalid-feedback">Please Enter Valid password
+         
+        </div>
+       
+        <small class="text-danger" [class.d-none]="password.valid || password.untouched">
+          <b *ngIf="password.errors && password.errors?.['pattern']">password must have lower,upper,special Characters & numbers.</b>
+          
+          <b *ngIf="password.errors && password.errors['minlength']">password must contain at least 8 characters.</b>
+          
+        </small>
+       
+        
+      </div>
+  
+      <div class="form-group">
+        <label for="confirmPassword">ConfirmPassword: <b class="text-danger">*</b></label>
+        <input type="confirmPassword" class="form-control" placeholder="Re-enter password" name="confirmPassword" [(ngModel)]="receiver.confirmPassword" required 
+        #confirmPassword="ngModel"
+        [class.is-invalid]="confirmPassword.invalid && confirmPassword.touched">
+        <div class="text-danger" *ngIf="receiver.password!=receiver.confirmPassword">confirm password and password must be same</div>      
+  
+      </div>
+      <div class="form-group">
+        <label for="address">Address: <b class="text-danger">*</b></label>
+        <input type="text" class="form-control" placeholder="enter city" name="address" [(ngModel)]="receiver.address" required 
+        #address="ngModel"
+        [class.is-invalid]="address.invalid && address.touched">
+       <small class="text-danger" [class.d-none]="address.valid || address.untouched"><b></b></small>
+      </div>
+      <div class="form-group">
+        <label for="state">State: <b class="text-danger">*</b></label>
+        <input type="text" class="form-control" placeholder="enter state" name="state" [(ngModel)]="receiver.state" required 
+        #state="ngModel"
+        [class.is-invalid]="state.invalid && state.touched">
+       <small class="text-danger" [class.d-none]="state.valid || state.untouched"><b></b></small>
+      </div>
+    
+        <button [disabled]="updateReceiver.form.invalid" class = "btn btn-success" type ="Submit">Submit</button>
+    
+    </form>
+    </div> 
+        </div></div></div>
+
